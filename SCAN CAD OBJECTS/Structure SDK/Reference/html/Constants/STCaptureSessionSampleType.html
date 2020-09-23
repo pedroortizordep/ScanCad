@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STCaptureSessionSampleType Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STCaptureSessionSampleType Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>STCaptureSession+Types.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">STCaptureSessionSampleType</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>Indicates the type of sample output by the capture session and sent to [STCaptureSessionDelegate captureSession:didOutputSample:type]</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSInteger, STCaptureSessionSampleType ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeUnknown</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeSensorDepthFrame</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeSensorInfraredFrame</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeSensorVisibleFrame</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeSynchronizedFrames</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeIOSColorFrame</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeDeviceMotionData</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeGyroData</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionSampleTypeAccelData</a>,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeUnknown"></a><code>STCaptureSessionSampleTypeUnknown</code></dt>
+<dd>
+
+
+<p>Indicates that an unknown sample type has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeSensorDepthFrame"></a><code>STCaptureSessionSampleTypeSensorDepthFrame</code></dt>
+<dd>
+
+
+<p>Indicates that an <a href="../Classes/STDepthFrame.html">STDepthFrame</a> type has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeSensorInfraredFrame"></a><code>STCaptureSessionSampleTypeSensorInfraredFrame</code></dt>
+<dd>
+
+
+<p>Indicates that an <a href="../Classes/STInfraredFrame.html">STInfraredFrame</a> type has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeSensorVisibleFrame"></a><code>STCaptureSessionSampleTypeSensorVisibleFrame</code></dt>
+<dd>
+
+
+<p>Indicates that a visible frame type has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeSynchronizedFrames"></a><code>STCaptureSessionSampleTypeSynchronizedFrames</code></dt>
+<dd>
+
+
+<p>Indicates that a set of synchronized depth, color, or infrared frames have been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeIOSColorFrame"></a><code>STCaptureSessionSampleTypeIOSColorFrame</code></dt>
+<dd>
+
+
+<p>Indicates that an <a href="../Classes/STColorFrame.html">STColorFrame</a> from the iOS color camera has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeDeviceMotionData"></a><code>STCaptureSessionSampleTypeDeviceMotionData</code></dt>
+<dd>
+
+
+<p>Indicates that Apple CoreMotion data has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeGyroData"></a><code>STCaptureSessionSampleTypeGyroData</code></dt>
+<dd>
+
+
+<p>Indicates that raw gyroscope data has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionSampleTypeAccelData"></a><code>STCaptureSessionSampleTypeAccelData</code></dt>
+<dd>
+
+
+<p>Indicates that raw accelerometer data has been output.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">STCaptureSession+Types.h</code></p>
+                    </div>
+                    
+                    
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 Occipital. All rights reserved. Updated: 2020-07-22</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

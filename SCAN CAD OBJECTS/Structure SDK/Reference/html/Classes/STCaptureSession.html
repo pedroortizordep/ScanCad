@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STCaptureSession Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/delegateQueue">delegateQueue</option>
+		
+		<option value="//api/name/delegate">delegate</option>
+		
+		<option value="//api/name/)">)</option>
+		
+		<option value="//api/name/streamingEnabled">streamingEnabled</option>
+		
+		<option value="//api/name/isStreaming">isStreaming</option>
+		
+		<option value="//api/name/properties">properties</option>
+		
+		<option value="//api/name/lens">lens</option>
+		
+		<option value="//api/name/lensDetection">lensDetection</option>
+		
+		<option value="//api/name/lastDetectedLens">lastDetectedLens</option>
+		
+		<option value="//api/name/sensorBatteryLevel">sensorBatteryLevel</option>
+		
+		<option value="//api/name/sensorMode">sensorMode</option>
+		
+		<option value="//api/name/sensorName">sensorName</option>
+		
+		<option value="//api/name/sensorSerialNumber">sensorSerialNumber</option>
+		
+		<option value="//api/name/sensorFirmwareRevision">sensorFirmwareRevision</option>
+		
+		<option value="//api/name/sensorHardwareRevision">sensorHardwareRevision</option>
+		
+		<option value="//api/name/isSensorChargerConnected">isSensorChargerConnected</option>
+		
+		<option value="//api/name/userInstructions">userInstructions</option>
+		
+		<option value="//api/name/occWriter">occWriter</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/newCaptureSession">+ newCaptureSession</option>
+		
+		<option value="//api/name/newCaptureSessionWithIOSCameraDisabled">+ newCaptureSessionWithIOSCameraDisabled</option>
+		
+		<option value="//api/name/newCaptureSessionFromOccFile:">+ newCaptureSessionFromOccFile:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/launchCalibratorAppOrGoToAppStore">- launchCalibratorAppOrGoToAppStore</option>
+		
+		<option value="//api/name/startMonitoringWithOptions:">- startMonitoringWithOptions:</option>
+		
+		<option value="//api/name/calibrationType">- calibrationType</option>
+		
+		<option value="//api/name/calibrationTypeWithLens:">- calibrationTypeWithLens:</option>
+		
+		<option value="//api/name/resetARSession">- resetARSession</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STCaptureSession Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>STCaptureSession.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The capture session is the central point that manages all interactions between the Structure Sensor or Apple LiDAR, iOS color camera, and your application-specific <a href="#//api/name/delegate">delegate</a> class.</p>
+
+<p>More than one instance of the capture session can be created, however only one
+instance can connect to the sensor at a given time, and iOS will restrict you
+from using more than one video device at a time.</p>
+
+<p>Using the Apple LiDAR with ARKit will not allow access to any connected Structure Sensor.</p>
+
+<p>Your custom <a href="#//api/name/delegate">delegate</a> object can be registered using its <a href="#//api/name/delegate">delegate</a> property.</p>
+
+<p>When using Apple ARKit, only the captureSessionDidOutputSample <a href="#//api/name/delegate">delegate</a> will be called if the iOS color camera or CoreMotion is enabled.
+The respective <code>arSession</code> delegates will be called and allow for direct usage of the Apple ARKit API instead.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Protocols/STCaptureSessionDelegate.html">STCaptureSessionDelegate</a></li>
+</ul>
+
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Capture Session instantiation and factory methods" name="task_Capture Session instantiation and factory methods"></a>
+						<h2 class="task-title">Capture Session instantiation and factory methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/newCaptureSession" title="newCaptureSession"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newCaptureSession">+&nbsp;newCaptureSession</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a new capture session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)newCaptureSession</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This creates a capture session expecting to stream data from the iOS color
+camera and Structure Sensor.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/newCaptureSessionWithIOSCameraDisabled" title="newCaptureSessionWithIOSCameraDisabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newCaptureSessionWithIOSCameraDisabled">+&nbsp;newCaptureSessionWithIOSCameraDisabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a new capture session with the iOS color camera disabled.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)newCaptureSessionWithIOSCameraDisabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This creates a capture session that streams just Structure Sensor data.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/newCaptureSessionFromOccFile:" title="newCaptureSessionFromOccFile:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newCaptureSessionFromOccFile:">+&nbsp;newCaptureSessionFromOccFile:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a new capture session from an OCC file.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)newCaptureSessionFromOccFile:(NSString *)<em>occFilePath</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This creates a capture session expecting to not connect to any sensors, but to
+read and stream direct sensor data from an OCC file and function as if a sensor
+was directly connected. This allows for playing back recorded data as if it were
+live.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Capture Session delegate properties" name="task_Capture Session delegate properties"></a>
+						<h2 class="task-title">Capture Session delegate properties</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/delegateQueue" title="delegateQueue"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delegateQueue">&nbsp;&nbsp;delegateQueue</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The STCaptureSession <a href="#//api/name/delegate">delegate</a> queue.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) dispatch_queue_t delegateQueue</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This is the queue / thread that the <a href="#//api/name/delegate">delegate</a> callbacks are expected to be
+executed on.</p>
+
+<p>Defaults to <code>dispatch_get_main_queue()</code>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The STCaptureSession delegate.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;STCaptureSessionDelegate&gt; delegate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Use it to register your application-specific <a href="../Protocols/STCaptureSessionDelegate.html">STCaptureSessionDelegate</a> delegate.</p>
+
+<p>Defaults to nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/)" title=")"></a>
+	<h3 class="method-title"><code><a href="#//api/name/)">&nbsp;&nbsp;)</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The ARSessionDelegate allocated and bound to the ARSession internally.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;ARSessionDelegate&gt; arKitDelegate API_AVAILABLE ( ios ( 13.4 )</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Use it to register your own ARSessionDelegate and receive raw ARKit <a href="#//api/name/delegate">delegate</a> callbacks.</p>
+
+<p>Defaults to nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Capture Session streaming" name="task_Capture Session streaming"></a>
+						<h2 class="task-title">Capture Session streaming</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/streamingEnabled" title="streamingEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamingEnabled">&nbsp;&nbsp;streamingEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Controls whether to stream data from connected sensors.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL streamingEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Can be thought of as &ldquo;whether we would like to be streaming.&rdquo;</p>
+
+<p>Streaming can only be enabled / disabled after <code>startMonitoringWithOptions:options</code> has been called.</p>
+
+<p>See also:</p>
+
+<ul>
+<li>[STCaptureSession startMonitoringWithOptions:options];></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isStreaming" title="isStreaming"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isStreaming">&nbsp;&nbsp;isStreaming</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A property to inform the user whether or not streaming is actually occurring.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isStreaming</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>See also:</p>
+
+<ul>
+<li><a href="#//api/name/streamingEnabled">[STCaptureSession streamingEnabled]</a>;></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Capture Session settings and configuration" name="task_Capture Session settings and configuration"></a>
+						<h2 class="task-title">Capture Session settings and configuration</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/properties" title="properties"></a>
+	<h3 class="method-title"><code><a href="#//api/name/properties">&nbsp;&nbsp;properties</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Modify or get dynamic properties of the capture session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSDictionary *properties</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>These properties represent dynamic options that can be configured at any point.
+Examples of this include color camera exposure, white balance, etc. A simple
+example could be as follows:</p>
+
+<pre><code>_captureSession.properties = @{
+    kSTCaptureSessionPropertyIOSCameraExposureModeKey: @(STCaptureSessionIOSCameraExposureModeAuto),
+    kSTCaptureSessionPropertyIOSCameraWhiteBalanceModeKey: @(STCaptureSessionIOSCameraWhiteBalanceModeAuto),
+};
+</code></pre>
+
+<p>In this example, both the exposure and white balance on the iOS color camera are
+set to auto, and will be automatically handled by iOS.</p><div class="warning"><p><strong>Warning:</strong> It is an error to try and set auto-exposure and a locked ISO value. An exception will be raised if this combination of keys are used.</p>
+
+<p>You can identify which keys correspond to dynamic properties, as keys will be
+named kSTCaptureSessionPropertyXXX.</p>
+
+<ul>
+<li><code>kSTCaptureSessionPropertyIOSCameraFocusModeKey</code> :
+
+<ul>
+<li>Specifies what mode to set the color camera focus to.</li>
+<li><code>NSInteger</code> integral value equal to one of the <a href="../Constants/STCaptureSessionIOSCameraFocusMode.html"><code>STCaptureSessionIOSCameraFocusMode</code></a> constants.</li>
+<li>Defaults to a locked focus position set at calibration time.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraExposureModeKey</code> :
+
+<ul>
+<li>Specifies what mode to set the color camera exposure to.</li>
+<li><code>NSInteger</code> integral value equal to one of the <a href="../Constants/STCaptureSessionIOSCameraExposureMode.html"><code>STCaptureSessionIOSCameraExposureMode</code></a> constants.</li>
+<li>Defaults to auto exposure.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraISOModeKey</code> :
+
+<ul>
+<li>Specifies what mode to set the color camera ISO to.</li>
+<li><code>NSInteger</code> integral value equal to one of the <a href="../Constants/STCaptureSessionIOSCameraISOMode.html"><code>STCaptureSessionIOSCameraISOMode</code></a> constants.</li>
+<li>Defaults to auto ISO.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraWhiteBalanceModeKey</code> :
+
+<ul>
+<li>Specifies what mode to set the color camera white balance to.</li>
+<li><code>NSInteger</code> integral value equal to one of the <a href="../Constants/STCaptureSessionIOSCameraWhiteBalanceMode.html"><code>STCaptureSessionIOSCameraWhiteBalanceMode</code></a> constants.</li>
+<li>Defaults to auto white balance.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertySensorIRExposureModeKey</code> :
+
+<ul>
+<li>Specifies what mode to set the IR sensor exposure to (Mark II sensors only, currently).</li>
+<li><code>NSInteger</code> integral value equal to one of the <code>STCaptureSessionSensorIRExposureMode</code> constants.</li>
+<li>Defaults to a locked exposure determined by the sensor depth preset that is chosen.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>The following properties represent the values to use when locking one or more of
+the above color camera properties to a custom value. The units represent what one
+would typically use when using the standard AVCaptureDevice API.</p>
+
+<ul>
+<li><code>kSTCaptureSessionPropertyIOSCameraFocusValueKey</code> :
+
+<ul>
+<li>Specifies what position in [0.0 1.0] to set the focus <a href="#//api/name/lens">lens</a> position of the color camera.</li>
+<li><code>NSFloat</code> float value equal to the focus position desired.</li>
+<li>SLAM performance is typically better when the focus position is similar to what was used during calibration.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraExposureValueKey</code> :
+
+<ul>
+<li>Specifies what length of time (in seconds) to set for the color camera exposure.</li>
+<li><code>NSFloat</code> float value equal to the time in seconds to use as the target color camera exposure.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraISOValueKey</code> :
+
+<ul>
+<li>Specifies what ISO speed to set for the color camera ISO.</li>
+<li><code>NSFloat</code> float value equal to the desired ISO of the color camera.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraWhiteBalanceRedGainValueKey</code> :
+
+<ul>
+<li>Specifies the value of the red gain value for white balance.</li>
+<li><code>NSFloat</code> float value in the range of [1.0 maxWhiteBalanceGain] for the red gain.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraWhiteBalanceGreenGainValueKey</code> :
+
+<ul>
+<li>Specifies the value of the green gain value for white balance.</li>
+<li><code>NSFloat</code> float value in the range of [1.0 maxWhiteBalanceGain] for the green gain.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertyIOSCameraWhiteBalanceBlueGainValueKey</code> :
+
+<ul>
+<li>Specifies the value of the blue gain value for white balance.</li>
+<li><code>NSFloat</code> float value in the range of [1.0 maxWhiteBalanceGain] for the blue gain.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertySensorIRExposureValueKey</code> :
+
+<ul>
+<li>Specifies the what length of time (in seconds) to set for the IR / Depth exposure (Mark II only)</li>
+<li><code>NSFloat</code> float value equal to the time in seconds to use as the target IR / Depth exposure</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionPropertySensorIRAnalogGainValueKey</code> :
+
+<ul>
+<li>Specifies what analog gain mode (1x, 2x, 4x, 8x) to set on the IR sensor (Mark II only)</li>
+<li><code>NSInteger</code> integral value equal to one of the <a href="../Constants/STCaptureSessionSensorAnalogGainMode.html"><code>STCaptureSessionSensorAnalogGainMode</code></a> constants.</li>
+<li>Defaults to <code>STCaptureSessionSensorAnalogGainMode8_0</code> for an 8x IR gain.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Constants/STCaptureSessionIOSCameraFocusMode.html">STCaptureSessionIOSCameraFocusMode</a></li>
+<li><a href="../Constants/STCaptureSessionIOSCameraExposureMode.html">STCaptureSessionIOSCameraExposureMode</a></li>
+<li><a href="../Constants/STCaptureSessionIOSCameraISOMode.html">STCaptureSessionIOSCameraISOMode</a></li>
+<li><a href="../Constants/STCaptureSessionIOSCameraWhiteBalanceMode.html">STCaptureSessionIOSCameraWhiteBalanceMode</a></li>
+<li><STCaptureSessionSensorIRExposureMode></li>
+<li><a href="../Constants/STCaptureSessionSensorAnalogGainMode.html">STCaptureSessionSensorAnalogGainMode</a></li>
+</ul>
+</div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/lens" title="lens"></a>
+	<h3 class="method-title"><code><a href="#//api/name/lens">&nbsp;&nbsp;lens</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property for setting or getting the current color camera lens type that the capture session is using.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (atomic, readwrite) STLens lens</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Describes the current lens configuration (normal or wide vision) that is
+attached to the bracket for the Structure Sensor. This is important as each lens
+type will correspond to an individual calibration corresponding to it from
+Structure Sensor Calibrator.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Constants/STLens.html">STLens</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/lensDetection" title="lensDetection"></a>
+	<h3 class="method-title"><code><a href="#//api/name/lensDetection">&nbsp;&nbsp;lensDetection</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property for managing the <a href="#//api/name/lens">lens</a> detector from the capture session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) STLensDetectorState lensDetection</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The value this property is set to controls the behavior of the <a href="#//api/name/lens">lens</a> detector
+within the capture session (i.e. whether it is enabled / on, disabled / off, or
+merely warns when the detected <a href="#//api/name/lens">lens</a> does not match the type of <a href="#//api/name/lens">lens</a> set in
+<code>_captureSession.</code>lens<code></code>)</p>
+
+<p>See also:</p>
+
+<ul>
+<li><STLensDetectorState></li>
+<li><a href="../Protocols/STCaptureSessionDelegate.html#//api/name/captureSession:onLensDetectorOutput:">[STCaptureSessionDelegate captureSession:onLensDetectorOutput:]</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/lastDetectedLens" title="lastDetectedLens"></a>
+	<h3 class="method-title"><code><a href="#//api/name/lastDetectedLens">&nbsp;&nbsp;lastDetectedLens</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to describe the last status sent by the <a href="#//api/name/lens">lens</a> detector.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) STDetectedLensStatus lastDetectedLens</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The value this property is set to is derived from the result of the lens
+detector. Thus, if the lens detector is disabled / off, then this value will
+mean nothing.</p>
+
+<p>See also:</p>
+
+<ul>
+<li>&lt;[STDetectedLensStatus]</li>
+<li><a href="#//api/name/lensDetection">[STCaptureSession lensDetection]</a></li>
+<li><a href="../Protocols/STCaptureSessionDelegate.html#//api/name/captureSession:onLensDetectorOutput:">[STCaptureSessionDelegate captureSession:onLensDetectorOutput:]</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorBatteryLevel" title="sensorBatteryLevel"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorBatteryLevel">&nbsp;&nbsp;sensorBatteryLevel</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to read the sensor battery level of the controlled Structure Sensor, or nil if no sensor is connected.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int sensorBatteryLevel</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorMode" title="sensorMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorMode">&nbsp;&nbsp;sensorMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to read the last mode entered by a Structure Sensor.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) STCaptureSessionSensorMode sensorMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorName" title="sensorName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorName">&nbsp;&nbsp;sensorName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to read the name of the controlled Structure Sensor, or nil if no sensor is connected.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *sensorName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorSerialNumber" title="sensorSerialNumber"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorSerialNumber">&nbsp;&nbsp;sensorSerialNumber</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to read the serial number of the controlled sensor, or nil if no sensor is connected.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *sensorSerialNumber</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorFirmwareRevision" title="sensorFirmwareRevision"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorFirmwareRevision">&nbsp;&nbsp;sensorFirmwareRevision</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to read the firmware revision of the controlled sensor, or nil if no sensor is connected.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *sensorFirmwareRevision</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sensorHardwareRevision" title="sensorHardwareRevision"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sensorHardwareRevision">&nbsp;&nbsp;sensorHardwareRevision</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to read the hardware revision of the controlled sensor, or nil if no sensor is connected.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *sensorHardwareRevision</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isSensorChargerConnected" title="isSensorChargerConnected"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isSensorChargerConnected">&nbsp;&nbsp;isSensorChargerConnected</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property to tell whether or not the Structure Sensor charger of the connected sensor is plugged in.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isSensorChargerConnected</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userInstructions" title="userInstructions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userInstructions">&nbsp;&nbsp;userInstructions</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property that provides access to a set of user facing warnings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) STCaptureSessionUserInstruction userInstructions</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>These warnings are meant to inform STCaptureSession users about important status
+considerations of the capture session. This could be anything from notifying
+that the sensor is not connected, to needing to run Calibrator.</p>
+
+<p>An example of how this might be used could be as follows:</p>
+
+<pre><code>STCaptureSessionUserInstruction userInstructions = _captureSession.userInstructions;
+
+bool needToConnectSensor = userInstructions &amp; STCaptureSessionUserInstructionNeedToConnectSensor;
+bool needToRunCalibrator = userInstructions &amp; STCaptureSessionUserInstructionNeedToRunCalibrator;
+
+if (needToConnectSensor)
+{
+    // Show message to user about connecting the Structure Sensor
+}
+
+if (needToRunCalibrator)
+{
+    // Show calibration overlay, or some message that calls to
+    // [STCaptureSession launchCalibratorOrGoToAppStore];
+    //
+    // NOTE: If you have an approximate calibration (see
+    // [STCaptureSession calibrationType]), this flag will still be set.
+}
+</code></pre>
+
+<p>See also:</p>
+
+<ul>
+<li><STCaptureSessionUserInstruction></li>
+<li><a href="#//api/name/calibrationType">[STCaptureSession calibrationType]</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="OCC writing" name="task_OCC writing"></a>
+						<h2 class="task-title">OCC writing</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/occWriter" title="occWriter"></a>
+	<h3 class="method-title"><code><a href="#//api/name/occWriter">&nbsp;&nbsp;occWriter</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Property that provides access to a class that handles the OCC writing functionality of the capture session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) STOccFileWriter *occWriter</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>By using the OCC writer, incoming frames and events can be saved to a file at
+some local file location. These frames and events are stored in such a way that
+the OCC file can be replayed as a sensor replacement (see
+<a href="#//api/name/newCaptureSessionFromOccFile:">[STCaptureSession newCaptureSessionFromOccFile:]</a>).</p>
+
+<p>When <a href="../Classes/STOccFileWriter.html#//api/name/stopWriting">[STOccFileWriter stopWriting]</a> or <a href="../Classes/STOccFileWriter.html#//api/name/cancelWriting">[STOccFileWriter cancelWriting]</a> are
+called, this object will reset itself to a new instance, and the old value of
+this object will be invalid. This also means that H264 compression, if used,
+will also need to be set again on the new writer instance.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Classes/STOccFileWriter.html">STOccFileWriter</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Capture Session instance methods" name="task_Capture Session instance methods"></a>
+						<h2 class="task-title">Capture Session instance methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/launchCalibratorAppOrGoToAppStore" title="launchCalibratorAppOrGoToAppStore"></a>
+	<h3 class="method-title"><code><a href="#//api/name/launchCalibratorAppOrGoToAppStore">&ndash;&nbsp;launchCalibratorAppOrGoToAppStore</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Launch the Calibrator app or prompt the user to install it.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)launchCalibratorAppOrGoToAppStore</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>An iOS app using the Structure Sensor should present its users with an
+opportunity to call this method when the following conditions are
+simultaneously met:</p>
+
+<ul>
+<li>The sensor doesn&rsquo;t have a <a href="#//api/name/calibrationType"><code>calibrationType</code></a> with value <code>CalibrationTypeDeviceSpecific</code>.</li>
+<li>A registered depth stream is required by the application.</li>
+<li>The iOS device is supported by the Calibrator app.</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> For this method to function, your app bundle&rsquo;s info plist must contain the following entry:</p>
+
+<p><key>LSApplicationQueriesSchemes</key>
+<array>
+<string>structure-sensor-calibrator</string>
+</array></p></div><div class="note"><p><strong>Note:</strong> See the calibration overlay sample code for more details.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startMonitoringWithOptions:" title="startMonitoringWithOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startMonitoringWithOptions:">&ndash;&nbsp;startMonitoringWithOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This method sets up the sensor configuration and starts monitoring for sensors (Structure Sensor and iOS color camera).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startMonitoringWithOptions:(NSDictionary *)<em>options</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>A dictionary containing the sensor and device configuration for the capture session.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Configuration here refers to the static options for the capture session (e.g.
+whether to connect to a depth or infrared stream, what resolution to stream
+color camera frames at).</p>
+
+<ul>
+<li><code>kSTCaptureSessionOptionDepthSensorEnabledKey</code> :
+
+<ul>
+<li>Specifies whether we want to enable the depth stream from a Structure Sensor.</li>
+<li><code>BOOL</code> value, true if-and-only-if you want to stream depth from a Structure Sensor.</li>
+<li>Defaults to <code>@YES</code>.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionInfraredSensorEnabledKey</code> :
+
+<ul>
+<li>Specifies whether we want to enable the infrared stream from a Structure Sensor.</li>
+<li><code>BOOL</code> value, true if-and-only-if you want to stream infrared from a Structure Sensor.</li>
+<li>Defaults to <code>@NO</code>.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionDepthSensorVGAEnabledIfAvailableKey</code> :
+
+<ul>
+<li>Specifies whether we want a VGA depth stream from the Structure Sensor, if available.</li>
+<li><code>BOOL</code> value, true if-and-only-if you want to stream VGA depth.</li>
+<li>Defaults to <code>@NO</code>.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionSensorAndIOSCameraSyncEnabledKey</code> :
+
+<ul>
+<li>Specifies whether to synchronize iOS color camera and Structure Sensor depth / infrared frames.</li>
+<li><code>BOOL</code> value, true if-and-only-if you want frame sync enabled.</li>
+<li>Defaults to <code>@YES</code> in most cases, except where the color camera is disabled.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionIOSCameraKey</code> :
+
+<ul>
+<li>Specifies which iOS camera to connect to.</li>
+<li><code>NSNumber</code> integral value equal to one of the <a href="../Constants/STCaptureSessionIOSCamera.html"><code>STCaptureSessionIOSCamera</code></a> constants.</li>
+<li>Set by default by the capture session factory methods (e.g. <a href="#//api/name/newCaptureSession">newCaptureSession</a>).</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionColorResolutionKey</code> :
+
+<ul>
+<li>Specifies the desired resolution of the streamed color frames.</li>
+<li><code>NSNumber</code> integral value equal to one of the <a href="../Constants/STCaptureSessionColorResolution.html"><code>STCaptureSessionColorResolution</code></a> constants.</li>
+<li>Defaults to VGA resolution.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionColorMaxFPSKey</code> :
+
+<ul>
+<li>Specifies the maximum FPS to try and stream with the iOS color camera. May not be possible depending on the resolution and format.</li>
+<li><code>NSFloat</code> float value specifying the maximum FPS to stream color frames at.</li>
+<li>Defaults to 30.0 FPS.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionUseAppleCoreMotionKey</code>
+
+<ul>
+<li>Specifies whether to stream Apple CoreMotion data or raw gyroscope / accelerometer data.</li>
+<li><code>BOOL</code> value, true if-and-only-if you wish to receive CoreMotion data from the capture session.</li>
+<li>Defaults to <code>@NO</code></li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionToggleDepthSensorAutomaticallyKey</code>
+
+<ul>
+<li>Specifies whether to toggle the depth sensor on and off automatically when it becomes connected.</li>
+<li><code>BOOL</code> value, true if-and-only-if you wish to toggle the depth sensor automatically.</li>
+<li>Defaults to <code>@YES</code>.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionStartOCCAfterSecondsKey</code>
+
+<ul>
+<li>Specifies the number of seconds to skip in OCC playback when streaming from an OCC file.</li>
+<li><code>NSDouble</code> float value, specifying the amount of time since the beginning of OCC playback to wait before streaming.</li>
+<li>Defaults to zero.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionSimulateRealtimePlaybackKey</code>
+
+<ul>
+<li>Specifies whether to simulate real-time effects of playback when streaming from an OCC file.</li>
+<li>Real-time effects can for example be dropped frames, missed events, etc.</li>
+<li><code>BOOL</code> value, true if-and-only-if you want to simulate real-time effects of playback while streaming.</li>
+<li>Defaults to <code>@NO</code>.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionDepthStreamPresetKey</code>
+
+<ul>
+<li>Specifies a depth sensor preset to optimize the depth range, exposure, and other settings to optimize for specific use cases.</li>
+<li>e.g. Optimize for close-range depth when using the body-scanning preset, or optimize the sensor for mid-to-long range depth when using the room-scanning preset</li>
+<li><code>NSInteger</code> integral value specifying one of the <a href="../Constants/STCaptureSessionPreset.html"><code>STCaptureSessionPreset</code></a> constants.</li>
+<li>Defaults to the default preset.</li>
+</ul>
+</li>
+<li><code>kSTCaptureSessionOptionUseARKitKey</code>
+
+<ul>
+<li>Specifies whether we want to enable streaming and SLAM from Apple ARKit. Does not require a Structure Sensor to begin streaming.</li>
+<li>Requires <code>kSTCaptureSessionOptionDepthSensorEnabledKey</code> to be set to false.</li>
+<li><code>BOOL</code> value, true if-and-only-if you wish to use Apple ARKit.</li>
+<li>Defaults to <code>@NO</code>.</li>
+</ul>
+</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/calibrationType" title="calibrationType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/calibrationType">&ndash;&nbsp;calibrationType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the type of the current depth-color calibration for a Structure Sensor and current value of <code>_captureSession.</code>lens<code></code>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (STCalibrationType)calibrationType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This value can change depending on the actual device-sensor combination in use.</p><div class="warning"><p><strong>Warning:</strong> This method will throw an exception when called while no sensor is connected.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="#//api/name/calibrationTypeWithLens:">[STCaptureSession calibrationTypeWithLens:]</a></li>
+</ul>
+</div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/calibrationTypeWithLens:" title="calibrationTypeWithLens:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/calibrationTypeWithLens:">&ndash;&nbsp;calibrationTypeWithLens:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the type of the current depth-color calibration for a Structure Sensor and given <a href="#//api/name/lens">lens</a> type.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (STCalibrationType)calibrationTypeWithLens:(STLens)<em>lens</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This value can change depending on the actual device-sensor combination in use.</p><div class="warning"><p><strong>Warning:</strong> This method will throw an exception when called while no sensor is connected.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="#//api/name/calibrationType">[STCaptureSession calibrationType]</a></li>
+</ul>
+</div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resetARSession" title="resetARSession"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resetARSession">&ndash;&nbsp;resetARSession</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Resets the state of ARKit initialized within, including both tracking and mapping and all captured data.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)resetARSession</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Call this function when a reset on ARKit is required.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 Occipital. All rights reserved. Updated: 2020-07-22</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STTracker Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/scene">scene</option>
+		
+		<option value="//api/name/initialCameraPose">initialCameraPose</option>
+		
+		<option value="//api/name/trackerHints">trackerHints</option>
+		
+		<option value="//api/name/poseAccuracy">poseAccuracy</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithScene:options:">- initWithScene:options:</option>
+		
+		<option value="//api/name/reset">- reset</option>
+		
+		<option value="//api/name/updateCameraPoseWithDepthFrame:colorFrame:error:">- updateCameraPoseWithDepthFrame:colorFrame:error:</option>
+		
+		<option value="//api/name/updateCameraPoseWithMotion:">- updateCameraPoseWithMotion:</option>
+		
+		<option value="//api/name/updateCameraPoseWithGyro:">- updateCameraPoseWithGyro:</option>
+		
+		<option value="//api/name/updateCameraPoseWithAccel:">- updateCameraPoseWithAccel:</option>
+		
+		<option value="//api/name/lastFrameCameraPose">- lastFrameCameraPose</option>
+		
+		<option value="//api/name/setOptions:">- setOptions:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STTracker Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>STTracker.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A STTracker instance tracks the 3D position of the Structure Sensor.</p>
+
+<p>It uses sensor information and optionally IMU data to estimate how the camera is being moved over time, in real-time.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="../Constants/STTrackerType.html">STTrackerType</a></li>
+</ul>
+
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/scene" title="scene"></a>
+	<h3 class="method-title"><code><a href="#//api/name/scene">&nbsp;&nbsp;scene</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p><a href="../Classes/STScene.html">STScene</a> object storing common SLAM information.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) STScene *scene</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initialCameraPose" title="initialCameraPose"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initialCameraPose">&nbsp;&nbsp;initialCameraPose</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The initial camera pose. Tracking will use this as the first frame pose.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) GLKMatrix4 initialCameraPose</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trackerHints" title="trackerHints"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trackerHints">&nbsp;&nbsp;trackerHints</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The current tracker hints.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) STTrackerHints trackerHints</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>See also:</p>
+
+<ul>
+<li>STTrackerHints</li>
+<li><a href="#//api/name/poseAccuracy">[STTracker poseAccuracy]</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/poseAccuracy" title="poseAccuracy"></a>
+	<h3 class="method-title"><code><a href="#//api/name/poseAccuracy">&nbsp;&nbsp;poseAccuracy</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The current tracker pose accuracy.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) STTrackerPoseAccuracy poseAccuracy</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>See also:</p>
+
+<ul>
+<li>STTrackerPoseAccuracy</li>
+<li><a href="#//api/name/trackerHints">[STTracker trackerHints]</a></li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithScene:options:" title="initWithScene:options:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithScene:options:">&ndash;&nbsp;initWithScene:options:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>STTracker initialization.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithScene:(STScene *)<em>scene</em> options:(NSDictionary *)<em>options</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scene</code></th>
+						<td><p>The <a href="../Classes/STScene.html">STScene</a> context.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>Dictionary of options. The valid keys are:</p>
+
+<ul>
+<li><code>kSTTrackerTypeKey</code>:
+
+<ul>
+<li>Specifies the tracking algorithm.</li>
+<li>NSNumber integral value equal to one the <a href="../Constants/STTrackerType.html">STTrackerType</a> constants.</li>
+<li>Required.</li>
+</ul>
+</li>
+<li><code>kSTTrackerQualityKey</code>:
+
+<ul>
+<li>Specifies a tracking quality hint.</li>
+<li>NSNumber integral value equal to one the <a href="../Constants/STTrackerQuality.html">STTrackerQuality</a> constants.</li>
+<li>Defaults to <code>STTrackerQualityAccurate</code>.</li>
+</ul>
+</li>
+<li><code>kSTTrackerTrackAgainstModelKey</code>:
+
+<ul>
+<li>Specifies whether to enable tracking against the model.</li>
+<li>NSNumber boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>If enabled, the tracker will attempt to match the current image with the current state of the reconstructed model. This can drastically reduce the pose estimation drift.</li>
+<li><strong>Note:</strong> this option requires an <a href="../Classes/STMapper.html">STMapper</a> to be attached to the <a href="#//api/name/scene">scene</a>.</li>
+</ul>
+</li>
+<li><code>kSTTrackerAvoidPitchRollDriftKey</code>:
+
+<ul>
+<li>Specifies whether to enable pitch and roll drift cancellation using IMU.</li>
+<li>NSNumber boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>This can eliminate drift along these rotation axis, but can also result in lower short term accuracy.</li>
+<li>Recommended for unbounded tracking.</li>
+</ul>
+</li>
+<li><code>kSTTrackerAvoidHeightDriftKey</code>:
+
+<ul>
+<li>Specifies whether to enable height drift cancellation using ground plane detection.</li>
+<li>NSNumber boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>This can eliminate vertical drift, but can also result in lower short term accuracy.</li>
+<li>Recommended for unbounded tracking.</li>
+</ul>
+</li>
+<li><code>kSTTrackerBackgroundProcessingEnabledKey</code>:
+
+<ul>
+<li>Specifies whether to enable background processing.</li>
+<li>NSNumber boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>This can significantly reduce the time spent in the tracker before getting a new pose, but the tracker may keep using CPU/GPU resources between frames.</li>
+</ul>
+</li>
+<li><code>kSTTrackerAcceptVaryingColorExposureKey</code>:
+
+<ul>
+<li>Specifies whether to accept varying exposures for the iOS camera.</li>
+<li>NSNumber boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>To ensure the optimal robustness, it is recommended to lock the iOS color camera exposure during tracking if the <code>STTrackerDepthAndColorBased</code> tracker type is being used.</li>
+<li>By default, the tracker will return an error if it detects a change in the exposure settings, but it can be forced to accept it by enabling this option.</li>
+</ul>
+</li>
+<li><code>kSTTrackerLegacyKey</code>:
+
+<ul>
+<li>As of SDK 0.8, improved tracking is enabled by default. Set this to @YES if you want to enable the pre-0.8 tracking behavior.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>This setting affects all tracker types, i.e. both STTrackerDepthBased and STTrackerDepthAndColorBased.</li>
+</ul>
+</li>
+<li><code>kSTTrackerSceneTypeKey</code>
+
+<ul>
+<li>Specifies a general &ldquo;<span>scene</span> type&rdquo; to account for tracker-specific presets.</li>
+<li>NSNumber integral value equal to one of the <a href="../Constants/STTrackerSceneType.html">STTrackerSceneType</a> constants.</li>
+<li>Defaults to STTrackerSceneTypeObject.</li>
+<li>You will get better tracking if this matches the <a href="#//api/name/scene">scene</a> you are tracking against.</li>
+<li>STTrackerSceneTypeObject assumes the target is to scan objects or people (e.g. Scanner).</li>
+<li>STTrackerSceneTypeObjectOnTurntable assumes the target is an object or person on a moving platform and that the device (iOS device + Sensor) are not moving.</li>
+<li>STTrackerSceneTypeRoom assumes the target is to scan a room (e.g. RoomCapture).</li>
+</ul>
+</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>STTracker cannot be used until an <a href="../Classes/STScene.html">STScene</a> has been provided.</p>
+
+<p>Sample usage:</p>
+
+<pre><code>NSDictionary* options = @{
+    kSTTrackerTypeKey                       = @(STTrackerDepthBased),
+    kSTTrackerQualityKey                    = @(STTrackerQualityAccurate),
+    kSTTrackerTrackAgainstModelKey          = @YES,
+    kSTTrackerAcceptVaryingColorExposureKey = @NO,
+    kSTTrackerBackgroundProcessingEnabledKey= @YES,
+    kSTTrackerLegacyKey                     = @NO,
+    kSTTrackerSceneTypeKey                  = @(STTrackerSceneTypeObject)
+};
+STTracker* tracker = [[STTracker alloc] initWithScene:myScene options:options];
+</code></pre>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reset" title="reset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reset">&ndash;&nbsp;reset</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Reset the tracker to its initial state.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)reset</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateCameraPoseWithDepthFrame:colorFrame:error:" title="updateCameraPoseWithDepthFrame:colorFrame:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateCameraPoseWithDepthFrame:colorFrame:error:">&ndash;&nbsp;updateCameraPoseWithDepthFrame:colorFrame:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Update the camera pose estimate using the given depth frame.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)updateCameraPoseWithDepthFrame:(STDepthFrame *)<em>depthFrame</em> colorFrame:(STColorFrame *)<em>colorFrame</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>The <a href="../Classes/STDepthFrame.html">STDepthFrame</a> depth frame.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>colorFrame</code></th>
+						<td><p>The <a href="../Classes/STColorFrame.html">STColorFrame</a> color buffer.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>On return, if it fails, points to an NSError describing the failure.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>TRUE if success, FALSE otherwise, filling error with the explanation.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="note"><p><strong>Note:</strong> colorFrame can be nil if the tracker type is <code>STTrackerDepthBased</code>. For tracker type <code>STTrackerDepthAndColorBased</code>, only <code>kCVPixelFormatType_420YpCbCr8BiPlanarFullRange</code> is supported for sampleBuffer format.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateCameraPoseWithMotion:" title="updateCameraPoseWithMotion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateCameraPoseWithMotion:">&ndash;&nbsp;updateCameraPoseWithMotion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Update the current pose estimates using the provided motion data.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateCameraPoseWithMotion:(CMDeviceMotion *)<em>motionData</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>motionData</code></th>
+						<td><p>Provided motion data.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateCameraPoseWithGyro:" title="updateCameraPoseWithGyro:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateCameraPoseWithGyro:">&ndash;&nbsp;updateCameraPoseWithGyro:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Update the current pose estimates with the raw gyroscope data.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateCameraPoseWithGyro:(CMGyroData *)<em>motionData</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>motionData</code></th>
+						<td><p>Provided raw gyroscope data.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateCameraPoseWithAccel:" title="updateCameraPoseWithAccel:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateCameraPoseWithAccel:">&ndash;&nbsp;updateCameraPoseWithAccel:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Update the current pose estimates with the raw accelerometer data.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateCameraPoseWithAccel:(CMAccelerometerData *)<em>motionData</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>motionData</code></th>
+						<td><p>Provided raw accelerometer data.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/lastFrameCameraPose" title="lastFrameCameraPose"></a>
+	<h3 class="method-title"><code><a href="#//api/name/lastFrameCameraPose">&ndash;&nbsp;lastFrameCameraPose</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Return the most recent camera pose estimate.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (GLKMatrix4)lastFrameCameraPose</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setOptions:" title="setOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setOptions:">&ndash;&nbsp;setOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Dynamically adjust the tracker options.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setOptions:(NSDictionary *)<em>options</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>Dictionary of options. The valid keys are:</p>
+
+<ul>
+<li><code>kSTTrackerQualityKey</code>:
+
+<ul>
+<li>Specifies a tracking quality hint.</li>
+<li>NSNumber integral value equal to one the <a href="../Constants/STTrackerQuality.html">STTrackerQuality</a> constants.</li>
+<li>Defaults to <code>STTrackerQualityAccurate</code>.</li>
+</ul>
+</li>
+<li><code>kSTTrackerBackgroundProcessingEnabledKey</code>:
+
+<ul>
+<li>Specifies whether to enable background processing.</li>
+<li>NSNumber boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>This can significantly reduce the time spent in the tracker before getting a new pose, but the tracker may keep using CPU/GPU resources between frames.</li>
+</ul>
+</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Currently, only <code>kSTTrackerQualityKey</code> and <code>kSTTrackerBackgroundProcessingEnabledKey</code> can be changed after initialization. Other options will remain unchanged.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STTracker.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 Occipital. All rights reserved. Updated: 2020-07-22</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

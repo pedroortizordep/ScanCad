@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STCaptureSessionDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/captureSession:sensorDidEnterMode:">- captureSession:sensorDidEnterMode:</option>
+		
+		<option value="//api/name/captureSession:colorCameraDidEnterMode:">- captureSession:colorCameraDidEnterMode:</option>
+		
+		<option value="//api/name/captureSession:sensorChargerStateChanged:">- captureSession:sensorChargerStateChanged:</option>
+		
+		<option value="//api/name/captureSession:didStartAVCaptureSession:">- captureSession:didStartAVCaptureSession:</option>
+		
+		<option value="//api/name/captureSession:didStopAVCaptureSession:">- captureSession:didStopAVCaptureSession:</option>
+		
+		<option value="//api/name/captureSession:didOutputSample:type:">- captureSession:didOutputSample:type:</option>
+		
+		<option value="//api/name/captureSession:onLensDetectorOutput:">- captureSession:onLensDetectorOutput:</option>
+		
+		<option value="//api/name/captureSessionWillCreateArSession:">- captureSessionWillCreateArSession:</option>
+		
+		<option value="//api/name/captureSessionDidCreateArSession:withARSCNView:">- captureSessionDidCreateArSession:withARSCNView:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STCaptureSessionDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>STCaptureSession.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Capture Session Delegate</p>
+
+<p>The interface that your application-specific class must implement in order to receive capture session callbacks.</p>
+
+<p>These callbacks replace the previous callbacks used when initializing the iOS camera and Structure Sensor separately.</p><div class="warning"><p><strong>Warning:</strong> When creating a new application implementing a sensor controller delegate, the main <code>Info.plist</code> needs to contain an additional key &ldquo;<code>Supported external accessory protocols</code>&rdquo;, with the following array of values:</p>
+
+<ul>
+<li><code>io.structure.control</code></li>
+<li><code>io.structure.depth</code></li>
+<li><code>io.structure.infrared</code></li>
+</ul>
+
+
+<p>Without this modification to the plist, the app will not be able to connect to the sensor. All sample apps have this key/value array.</p>
+
+<p>See also <a href="../Classes/STCaptureSession.html#//api/name/delegate">[STCaptureSession delegate]</a></p>
+
+<p>Delegate Registration Example:</p>
+
+<pre><code>[STCaptureSession newCaptureSession].delegate = self;
+</code></pre></div>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Connection Status" name="task_Connection Status"></a>
+						<h2 class="task-title">Connection Status</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/captureSession:sensorDidEnterMode:" title="captureSession:sensorDidEnterMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSession:sensorDidEnterMode:">&ndash;&nbsp;captureSession:sensorDidEnterMode:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the sensor entered a given mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSession:(STCaptureSession *)<em>captureSession</em> sensorDidEnterMode:(STCaptureSessionSensorMode)<em>mode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mode</code></th>
+						<td><p>The mode that the sensor has entered. See: <a href="../Constants/STCaptureSessionSensorMode.html">STCaptureSessionSensorMode</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If the sensor is not being used (using iOS camera only), then this delegate will
+never be signaled, however is still required to be implemented (can be a no-op).</p>
+
+<p>The modes are described as follows:</p>
+
+<ul>
+<li>Ready : The sensor is connected and available to stream.</li>
+<li>Waking up : The sensor is in the process of leaving low-power mode.</li>
+<li>Not Connected : The sensor is not connected.</li>
+<li>Battery depleted : The battery has been depleted and the sensor should be charged.</li>
+<li>Unknown : The sensor has entered an unknown state.</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/captureSession:colorCameraDidEnterMode:" title="captureSession:colorCameraDidEnterMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSession:colorCameraDidEnterMode:">&ndash;&nbsp;captureSession:colorCameraDidEnterMode:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the color camera entered a given mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSession:(STCaptureSession *)<em>captureSession</em> colorCameraDidEnterMode:(STCaptureSessionColorCameraMode)<em>mode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mode</code></th>
+						<td><p>The mode that the iOS color camera has entered. See <a href="../Constants/STCaptureSessionColorCameraMode.html">STCaptureSessionColorCameraMode</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If the color camera is not being used (using Structure Sensor only), then this
+delegate will never be signaled, however is still required to be implemented
+(can be a no-op).</p>
+
+<p>The modes are described as follows:</p>
+
+<ul>
+<li>Ready : The color camera has connected and available to stream.</li>
+<li>Permission denied : The color camera cannot be connected to because the permission was denied by the user.</li>
+<li>Unknown : The color camera has entered an unknown state.</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Power Management" name="task_Power Management"></a>
+						<h2 class="task-title">Power Management</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/captureSession:sensorChargerStateChanged:" title="captureSession:sensorChargerStateChanged:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSession:sensorChargerStateChanged:">&ndash;&nbsp;captureSession:sensorChargerStateChanged:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the sensor is connected or disconnected from the charger.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSession:(STCaptureSession *)<em>captureSession</em> sensorChargerStateChanged:(STCaptureSessionSensorChargerState)<em>chargerState</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>chargerState</code></th>
+						<td><p>The mode that the iOS color camera has entered. See <a href="../Constants/STCaptureSessionSensorChargerState.html">STCaptureSessionSensorChargerState</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The modes are described as follows:</p>
+
+<ul>
+<li>Connected : The charger is connected.</li>
+<li>Disconnected : The charger is disconnected.</li>
+<li>Unknown : The sensor charging state is unknown.</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="AVCaptureSession Status" name="task_AVCaptureSession Status"></a>
+						<h2 class="task-title">AVCaptureSession Status</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/captureSession:didStartAVCaptureSession:" title="captureSession:didStartAVCaptureSession:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSession:didStartAVCaptureSession:">&ndash;&nbsp;captureSession:didStartAVCaptureSession:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the AVCaptureSession for streaming iOS color camera frames has been started. This can be used to set both exposure and whitebalance to auto.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSession:(STCaptureSession *)<em>captureSession</em> didStartAVCaptureSession:(AVCaptureSession *)<em>avCaptureSession</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>avCaptureSession</code></th>
+						<td><p>The AVCaptureSession object used to control the iOS color cameras.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/captureSession:didStopAVCaptureSession:" title="captureSession:didStopAVCaptureSession:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSession:didStopAVCaptureSession:">&ndash;&nbsp;captureSession:didStopAVCaptureSession:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the AVCaptureSession for streaming iOS color camera frames has been stopped.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSession:(STCaptureSession *)<em>captureSession</em> didStopAVCaptureSession:(AVCaptureSession *)<em>avCaptureSession</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>avCaptureSession</code></th>
+						<td><p>The AVCaptureSession object used to control the iOS color cameras.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Capture Session sample output" name="task_Capture Session sample output"></a>
+						<h2 class="task-title">Capture Session sample output</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/captureSession:didOutputSample:type:" title="captureSession:didOutputSample:type:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSession:didOutputSample:type:">&ndash;&nbsp;captureSession:didOutputSample:type:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate of data arriving (of a given sample type).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSession:(STCaptureSession *)<em>captureSession</em> didOutputSample:(NSDictionary *)<em>sample</em> type:(STCaptureSessionSampleType)<em>type</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sample</code></th>
+						<td><p>An NSDictionary containing the sample objects (e.g. <a href="../Classes/STDepthFrame.html">STDepthFrame</a>, <a href="../Classes/STColorFrame.html">STColorFrame</a>, etc) specified by the sample type.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>The type of data sent from the capture session. See <a href="../Constants/STCaptureSessionSampleType.html">STCaptureSessionSampleType</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The sample types can be broken down as follows:</p>
+
+<ul>
+<li>DepthFrame : The sample dictionary contains an entry for an <a href="../Classes/STDepthFrame.html">STDepthFrame</a>.</li>
+<li>ColorFrame : The sample dictionary contains an entry for an <a href="../Classes/STColorFrame.html">STColorFrame</a>.</li>
+<li>InfraredFrame : The sample dictionary contains an entry for an <a href="../Classes/STInfraredFrame.html">STInfraredFrame</a>.</li>
+<li>SynchronizedFrames : The sample dictionary contains entries for synchronized depth, color, or infrared frames.</li>
+<li>DeviceMotionData : The sample dictionary contains an entry for iOS CoreMotion data.</li>
+<li>GyroData : The sample dictionary contains an entry for raw gyroscope data.</li>
+<li>AccelData : The sample dictionary contains an entry for raw accelerometer data.</li>
+</ul>
+
+
+<p>These all correspond to the kSTCaptureSessionSampleEntryXXXKey key entries at the top of this file.</p>
+
+<p>When kSTCaptureSessionOptionUseARKitKey is set to @(ON), this delegate will receive iOS color frames from ARKit.
+The frame can be accessed by providing the kSTCaptureSessionSampleEntryIOSColorFrame key on received STCaptureSessionSampleTypeSynchronizedFrames events.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/captureSession:onLensDetectorOutput:" title="captureSession:onLensDetectorOutput:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSession:onLensDetectorOutput:">&ndash;&nbsp;captureSession:onLensDetectorOutput:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the lens detector has determined a change in the state of the lens</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSession:(STCaptureSession *)<em>captureSession</em> onLensDetectorOutput:(STDetectedLensStatus)<em>detectedLensStatus</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>detectedLensStatus</code></th>
+						<td><p>The status of the lens that the detector has detected. See <a href="../Constants/STDetectedLensStatus.html">STDetectedLensStatus</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate will function differently based on the value of
+<code>_captureSession.lensDetection</code>. Explicitly:</p>
+
+<ul>
+<li>STLensDetectorOff : This delegate will never be notified; the detector is turned off.</li>
+<li>STLensDetectorOn : This delegate will be notified of the lens it detects, after setting <code>_captureSession.lens</code> to that value (if known).</li>
+<li>STLensDetectorWarnOnMismatch : The delegate will be notified of the lens it detects, but does not change the lens type that the capture session has set.</li>
+</ul>
+
+
+<p>In all cases above the lens type can still be set manually, however be wary of
+setting the lens type manually when the lens detector is on (not WarnOnMismatch),
+as the value of the lens type is likely to be overwritten.</p>
+
+<p>The status of the lens that can be sent to this delegate will be one of the following:</p>
+
+<ul>
+<li>Normal : There is no WVL unit attached to the Structure Sensor bracket.</li>
+<li>WideVisionLens : There is a WVL unit attached to the StructureSensor bracket.</li>
+<li>PerformingInitialDetection : The detector has started, but has not yet collected enough unique frames to make a decision.</li>
+<li>Unknown : The detector cannot fully determine if a WVL unit is attached or not attached to the Structure Sensor bracket.</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/captureSessionWillCreateArSession:" title="captureSessionWillCreateArSession:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSessionWillCreateArSession:">&ndash;&nbsp;captureSessionWillCreateArSession:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the ARSession will be created.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSessionWillCreateArSession:(STCaptureSession *)<em>captureSession</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This callback can be used to cleanup certain views or scenes that were previously allocated after the ARSCNView was created.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/captureSessionDidCreateArSession:withARSCNView:" title="captureSessionDidCreateArSession:withARSCNView:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureSessionDidCreateArSession:withARSCNView:">&ndash;&nbsp;captureSessionDidCreateArSession:withARSCNView:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notify the delegate that the ARSession is just created.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)captureSessionDidCreateArSession:(STCaptureSession *)<em>captureSession</em> withARSCNView:(ARSCNView *)<em>arScnView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>captureSession</code></th>
+						<td><p>The capture session object that signaled the delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>arScnView</code></th>
+						<td><p>The ARSCNView used to initialize the ARSession.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This callback can be used to initialize certain views or scenes that need to be allocated in userspace with the allocated ARSCNView.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STCaptureSession.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 Occipital. All rights reserved. Updated: 2020-07-22</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

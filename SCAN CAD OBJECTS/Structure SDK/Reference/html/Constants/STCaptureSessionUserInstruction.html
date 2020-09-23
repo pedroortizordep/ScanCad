@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STCaptureSessionUserInstruction Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STCaptureSessionUserInstruction Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>STCaptureSession+Types.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">STCaptureSessionUserInstruction</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>Indicates a set of warnings that a user of the capture session should act upon.</p>
+
+<p>All values can be combined together into a single integer that can express an
+array of options. To separate these options, one can use the bitwise-AND
+operator (&amp;) to check for each warning.</p>
+
+<pre><code>bool needToConnectSensor = _captureSession.userInstructions &amp; STCaptureSessionUserInstructionNeedToConnectSensor;
+</code></pre>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_OPTIONS(NSUInteger, STCaptureSessionUserInstruction ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionNone</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionNeedToConnectSensor</a> = 1 &lt; &lt; 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionNeedToChargeSensor</a> = 1 &lt; &lt; 1,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionNeedToRunCalibrator</a> = 1 &lt; &lt; 2,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionNeedToAuthorizeColorCamera</a> = 1 &lt; &lt; 3,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionOptionallyConnectStructureSensor</a> = 1 &lt; &lt; 4,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionSensorWakingUp</a> = 1 &lt; &lt; 5,<br>
+                            
+                            &nbsp;&nbsp; <a href="">STCaptureSessionUserInstructionFirmwareUpdateRequired</a> = 1 &lt; &lt; 6,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionNone"></a><code>STCaptureSessionUserInstructionNone</code></dt>
+<dd>
+
+
+<p>Indicates that no warnings are necessary, and that everything is working properly.
+    This state is also what is returned before the capture session has been properly started.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionNeedToConnectSensor"></a><code>STCaptureSessionUserInstructionNeedToConnectSensor</code></dt>
+<dd>
+
+
+<p>Indicates that the Structure Sensor needs to be plugged into the iOS device</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionNeedToChargeSensor"></a><code>STCaptureSessionUserInstructionNeedToChargeSensor</code></dt>
+<dd>
+
+
+<p>Indicates that the Structure Sensor needs to be charged.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionNeedToRunCalibrator"></a><code>STCaptureSessionUserInstructionNeedToRunCalibrator</code></dt>
+<dd>
+
+
+<p>Indicates that a device specific calibration could not be found for the
+given lens configuration, and Calibrator should be run for best results.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionNeedToAuthorizeColorCamera"></a><code>STCaptureSessionUserInstructionNeedToAuthorizeColorCamera</code></dt>
+<dd>
+
+
+<p>Indicates that the color camera cannot be started until the iOS camera permission is authorized for the app.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionOptionallyConnectStructureSensor"></a><code>STCaptureSessionUserInstructionOptionallyConnectStructureSensor</code></dt>
+<dd>
+
+
+<p>Indicates that the Structure Sensor needs to be plugged into the iOS device (optional).</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionSensorWakingUp"></a><code>STCaptureSessionUserInstructionSensorWakingUp</code></dt>
+<dd>
+
+
+<p>Indicates that the sensor is waking up from low-power mode.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="STCaptureSessionUserInstructionFirmwareUpdateRequired"></a><code>STCaptureSessionUserInstructionFirmwareUpdateRequired</code></dt>
+<dd>
+
+
+<p>Indicates that the sensor requires a firmware update.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">STCaptureSession+Types.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">STCaptureSession+Types.h</code></p>
+                    </div>
+                    
+                    
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 Occipital. All rights reserved. Updated: 2020-07-22</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

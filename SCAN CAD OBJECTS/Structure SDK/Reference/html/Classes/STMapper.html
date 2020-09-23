@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>STMapper Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Structure SDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Occipital</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/scene">scene</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithScene:options:">- initWithScene:options:</option>
+		
+		<option value="//api/name/reset">- reset</option>
+		
+		<option value="//api/name/integrateDepthFrame:cameraPose:">- integrateDepthFrame:cameraPose:</option>
+		
+		<option value="//api/name/finalizeTriangleMesh">- finalizeTriangleMesh</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">STMapper Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>STMapper.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A STMapper instance integrates sensor data to reconstruct a 3D model of a <a href="#//api/name/scene">scene</a>.</p>
+
+<p>It will update the <a href="#//api/name/scene">scene</a> mesh progressively as new depth frames are integrated.
+It runs in a background thread, which means that it may update the <a href="#//api/name/scene">scene</a> object at any time.</p>
+
+<p>It works over a fixed cuboid defining the volume of interest in the <a href="#//api/name/scene">scene</a>.
+This volume can be initialized interactively using <a href="../Classes/STCameraPoseInitializer.html">STCameraPoseInitializer</a>.</p>
+
+<p>The volume is defined by its size in the real world, in meters, and is discretized into voxels.
+The volume resolution specifies the size of each voxel in meters. As a consequence, the higher the resolution, the more voxels the mapper will need to compute.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/scene" title="scene"></a>
+	<h3 class="method-title"><code><a href="#//api/name/scene">&nbsp;&nbsp;scene</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The <a href="../Classes/STScene.html">STScene</a> model which will be updated.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) STScene *scene</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STMapper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithScene:options:" title="initWithScene:options:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithScene:options:">&ndash;&nbsp;initWithScene:options:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize with a given <a href="#//api/name/scene">scene</a> and volume resolution.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithScene:(STScene *)<em>scene</em> options:(NSDictionary *)<em>options</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scene</code></th>
+						<td><p>The <a href="../Classes/STScene.html">STScene</a> context.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>Dictionary of options. The valid keys are:</p>
+
+<ul>
+<li><code>kSTMapperVolumeResolutionKey</code>:
+
+<ul>
+<li>Specifies the volume resolution as the size of each voxel in meters.</li>
+<li><code>NSNumber</code> floating point value.</li>
+<li>Required.</li>
+</ul>
+</li>
+<li><code>kSTMapperVolumeBoundsKey</code>:
+
+<ul>
+<li>The extents of the bounding volume in number of voxels along each dimension.</li>
+<li><code>NSArray</code> of 3 <code>NSNumber</code> integral values.</li>
+<li>Defaults to <code>@[ @(128), @(128), @(128) ]</code>.</li>
+<li>To maintain good performance, we recommend to keep the boundaries under 290x290x290.</li>
+</ul>
+</li>
+<li><code>kSTMapperVolumeHasSupportPlaneKey</code>:
+
+<ul>
+<li>Specifies whether the volume cuboid has been initialized on top of a support plane.</li>
+<li><code>NSNumber</code> boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+<li>If the mapper is aware that the volume is on top of a support plane, it will adapt the pipeline to be more robust, and scan only the object if <code>kSTMapperVolumeHasSupportPlaneKey</code> is set to YES.</li>
+<li>This value is typically set from <code></code>STCameraPoseInitializer<code>.hasSupportPlane</code>.</li>
+</ul>
+</li>
+<li><code>kSTMapperVolumeCutBelowSupportPlaneKey</code>:
+
+<ul>
+<li>Specified whether the support plane should be kept out of the scan.</li>
+<li><code>NSNumber</code> boolean value.</li>
+<li>Defaults to <code>@YES</code>.</li>
+</ul>
+</li>
+<li><code>kSTMapperEnableLiveWireFrameKey</code>:
+
+<ul>
+<li>Specifies whether the mapper should automatically build a wireframe mesh in the background when new depth frames are provided.</li>
+<li><code>NSNumber</code> boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+</ul>
+</li>
+<li><code>kSTMapperDepthIntegrationFarThresholdKey</code>:
+
+<ul>
+<li>Specifies the depth integration far threshold.</li>
+<li>Individual depth values beyond the far threshold will be ignored by the mapper.</li>
+<li><code>NSNumber</code> floating point value.</li>
+<li>The value is in meters, and must be in the [0.5, 8.0] range.</li>
+<li>Defaults to <code>@(4.0)</code>.</li>
+</ul>
+</li>
+<li><code>kSTMapperLegacyKey</code>:
+
+<ul>
+<li>Specifies whether the pre-0.5 mapping technique should be used.</li>
+<li><code>NSNumber</code> boolean value.</li>
+<li>Defaults to <code>@NO</code>.</li>
+</ul>
+</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STMapper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reset" title="reset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reset">&ndash;&nbsp;reset</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Reset the mapper state. This will also stop any background processing.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)reset</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STMapper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/integrateDepthFrame:cameraPose:" title="integrateDepthFrame:cameraPose:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/integrateDepthFrame:cameraPose:">&ndash;&nbsp;integrateDepthFrame:cameraPose:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Integrate a new depth frame to the model.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)integrateDepthFrame:(STDepthFrame *)<em>depthFrame</em> cameraPose:(GLKMatrix4)<em>cameraPose</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>depthFrame</code></th>
+						<td><p>The depth frame.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cameraPose</code></th>
+						<td><p>The viewpoint to use for mapping.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The processing will be performed in a background queue, so this method is non-blocking.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STMapper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/finalizeTriangleMesh" title="finalizeTriangleMesh"></a>
+	<h3 class="method-title"><code><a href="#//api/name/finalizeTriangleMesh">&ndash;&nbsp;finalizeTriangleMesh</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Wait until ongoing processing in the background queue finishes, and build the final triangle mesh.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)finalizeTriangleMesh</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">STMapper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 Occipital. All rights reserved. Updated: 2020-07-22</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
